@@ -12,11 +12,10 @@ public class Interfaz {
 	Concesionario miConcesionario = new Concesionario();
 
 	public Interfaz() {
-		menuOpciones();
 	}
 
-	private void menuOpciones() {
-
+	public void menuOpciones() {
+		System.out.println("entro metodo");
 		String menu = "MENU CONCESIONARIO\n\n";
 		menu += "1. Registrar Vehiculo\n";
 		menu += "2. Buscar Vehiculo \n";
@@ -32,6 +31,7 @@ public class Interfaz {
 		int opcion = 0;
 
 		do {
+			System.out.println("entro ciclo");
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
 			switch (opcion) {
 			case 1:
@@ -50,13 +50,13 @@ public class Interfaz {
 				vehiculosStockVendidos();
 				break;
 			case 6:
-				// actualizarVehiculo();
+				actualizarVehiculo();
 				break;
 			case 7:
-				// valorVentasTotales();
+				valorVentasTotales();
 				break;
 			case 8:
-				// eliminarVehiculoNoVendido();
+				eliminarVehiculoNoVendido();
 				break;
 			default:
 				break;
@@ -65,13 +65,121 @@ public class Interfaz {
 
 	}
 
+	private void eliminarVehiculoNoVendido() {
+
+		if (miConcesionario.validadDatos()) {
+
+			String menu = "SELECCIONE VEHICULOS A ELIMINAR\n\n";
+			menu += "1. Moto\n";
+			menu += "2. Auto\n";
+			menu += "3. Camion\n";
+			menu += "4. Salir\n";
+
+			int opcion = 0;
+
+			do {
+				opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
+				switch (opcion) {
+				case 1:
+					elimiarMoto();
+					break;
+				case 2:
+					eliminarAuto();
+					break;
+				case 3:
+					eliminarCamion();
+					break;
+				default:
+					break;
+				}
+			} while (opcion != 4);
+
+		}
+
+	}
+
+	private void eliminarCamion() {
+		if (miConcesionario.validarCamion()) {
+			miConcesionario.eliminarCamion();
+		}
+
+	}
+
+	private void eliminarAuto() {
+		if (miConcesionario.validarAuto()) {
+			miConcesionario.eliminarAuto();
+		}
+
+	}
+
+	private void elimiarMoto() {
+
+		if (miConcesionario.validarMoto()) {
+			miConcesionario.eliminarMoto();
+		}
+
+	}
+
+	private void valorVentasTotales() {
+
+		if (miConcesionario.validadDatos()) {
+
+			miConcesionario.totalVentas();
+
+		}
+
+	}
+
+	private void actualizarVehiculo() {
+
+		if (miConcesionario.validadDatos()) {
+
+			String menu = "QUE VEHICULO DESEA ACTUALIZAR\n\n";
+			menu += "1. Moto\n";
+			menu += "2. Auto\n";
+			menu += "3. Camion\n";
+			menu += "4. Salir\n";
+
+			int opcion = 0;
+
+			do {
+				opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
+				switch (opcion) {
+				case 1:
+					if (miConcesionario.validarMoto()) {
+						miConcesionario.actualizarMoto();
+					}
+					break;
+				case 2:
+					if (miConcesionario.validarAuto()) {
+						miConcesionario.actualizarAuto();
+					}
+					break;
+				case 3:
+					if (miConcesionario.validarCamion()) {
+						miConcesionario.actualizarCamion();
+					}
+					break;
+				case 4:
+					JOptionPane.showMessageDialog(null, "Salir");
+					break;
+				default:
+					break;
+				}
+			} while (opcion != 4);
+
+		}
+
+	}
+
 	private void vehiculosStockVendidos() {
 
-		String menu = "MSOTRAR CANTIDAD DE VEHICULOS EN STOCK O VENDIDOS\n\n";
+		String menu = "MOSTRAR CANTIDAD DE VEHICULOS EN STOCK O VENDIDOS\n\n";
 		menu += "1. Mostrar cantidad de motos en stock\n";
 		menu += "2. Mostrar cantidad de autos en stock\n";
 		menu += "3. Mostrar cantidad de camiones en stock\n";
 		menu += "4. Mostrar cantidad de vehiculos VENDIDOS\n";
+		menu += "5. Salir\n";
 
 		int opcion = 0;
 
@@ -82,13 +190,13 @@ public class Interfaz {
 				cantMotosStock();
 				break;
 			case 2:
-//				cantAutosStock();
+				cantAutosStock();
 				break;
 			case 3:
-//				cantCamionesStock();
+				cantCamionesStock();
 				break;
 			case 4:
-//				cantVehiculosVendidos();
+				cantVehiculosVendidos();
 				break;
 			default:
 				break;
@@ -97,12 +205,36 @@ public class Interfaz {
 
 	}
 
+	private void cantVehiculosVendidos() {
+
+		if (miConcesionario.validadDatos()) {
+			miConcesionario.vahiculosVendidos();
+		}
+
+	}
+
+	private void cantCamionesStock() {
+
+		if (miConcesionario.validarCamion()) {
+			miConcesionario.CamionesEnStock();
+		}
+
+	}
+
+	private void cantAutosStock() {
+
+		if (miConcesionario.validarAuto()) {
+			miConcesionario.autosEnStock();
+		}
+
+	}
+
 	private void cantMotosStock() {
-		
-		if(miConcesionario.validarMoto()) {
+
+		if (miConcesionario.validarMoto()) {
 			miConcesionario.motosEnStock();
 		}
-		
+
 	}
 
 	private void venderVehiculo() {
@@ -145,6 +277,7 @@ public class Interfaz {
 				break;
 			case 4:
 				menuOpciones();
+				break;
 			default:
 				break;
 			}
@@ -177,13 +310,12 @@ public class Interfaz {
 				break;
 			case 4:
 				escogerVehiculoModelo();
-			case 5:
-				menuOpciones();
+				break;
 			default:
 				break;
 			}
-		} while (opcion != 6);
-
+		} while (opcion != 5);
+		menuOpciones();
 	}
 
 	private void escogerVehiculoModelo() {
@@ -213,7 +345,7 @@ public class Interfaz {
 			default:
 				break;
 			}
-		} while (opcion != 5);
+		} while (opcion != 4);
 
 	}
 
@@ -271,7 +403,7 @@ public class Interfaz {
 			default:
 				break;
 			}
-		} while (opcion != 5);
+		} while (opcion != 4);
 
 	}
 
@@ -383,7 +515,7 @@ public class Interfaz {
 			default:
 				break;
 			}
-		} while (opcion != 5);
+		} while (opcion != 4);
 
 	}
 
