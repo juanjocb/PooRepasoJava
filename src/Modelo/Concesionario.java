@@ -301,7 +301,7 @@ public class Concesionario {
 		String motosVendidos = "";
 		String autosVendidos = "";
 		String camionesVendidos = "";
-		int cont = 0;
+		int cont = 1;
 
 		for (Map.Entry<String, Moto> entry : motoMap.entrySet()) {
 			String motoPlaca = entry.getKey();
@@ -627,13 +627,13 @@ public class Concesionario {
 
 		}
 
-		for (Map.Entry<String, Auto> entry : autoMap.entrySet()) {
+		for (Map.Entry<String, Auto> entry : autosVendidosMap.entrySet()) {
 
 			cantVehiculosVendidos++;
 
 		}
 
-		for (Map.Entry<String, Moto> entry : motoMap.entrySet()) {
+		for (Map.Entry<String, Moto> entry : motosVendidasMap.entrySet()) {
 
 			cantVehiculosVendidos++;
 

@@ -15,7 +15,6 @@ public class Interfaz {
 	}
 
 	public void menuOpciones() {
-		System.out.println("entro metodo");
 		String menu = "MENU CONCESIONARIO\n\n";
 		menu += "1. Registrar Vehiculo\n";
 		menu += "2. Buscar Vehiculo \n";
@@ -31,7 +30,6 @@ public class Interfaz {
 		int opcion = 0;
 
 		do {
-			System.out.println("entro ciclo");
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
 			switch (opcion) {
 			case 1:
@@ -160,9 +158,6 @@ public class Interfaz {
 						miConcesionario.actualizarCamion();
 					}
 					break;
-				case 4:
-					JOptionPane.showMessageDialog(null, "Salir");
-					break;
 				default:
 					break;
 				}
@@ -275,14 +270,10 @@ public class Interfaz {
 			case 3:
 				registrarCamion();
 				break;
-			case 4:
-				menuOpciones();
-				break;
 			default:
 				break;
 			}
 		} while (opcion != 4);
-
 	}
 
 	private void menuBuscarVehiculo() {
@@ -305,6 +296,7 @@ public class Interfaz {
 				break;
 			case 2:
 				escogerVehiculoMarca();
+				break;
 			case 3:
 				escogerVehiculoReferencia();
 				break;
@@ -315,7 +307,6 @@ public class Interfaz {
 				break;
 			}
 		} while (opcion != 5);
-		menuOpciones();
 	}
 
 	private void escogerVehiculoModelo() {
@@ -337,11 +328,10 @@ public class Interfaz {
 				break;
 			case 2:
 				buscarAutoPorModelo();
+				break;
 			case 3:
 				buscarCamionPorModelo();
 				break;
-			case 4:
-				menuOpciones();
 			default:
 				break;
 			}
@@ -395,11 +385,12 @@ public class Interfaz {
 				break;
 			case 2:
 				buscarAutoPorReferencia();
+				break;
 			case 3:
 				buscarCamionPorReferencia();
 				break;
-			case 4:
-				menuOpciones();
+				
+				
 			default:
 				break;
 			}
@@ -453,15 +444,14 @@ public class Interfaz {
 				break;
 			case 2:
 				buscarAutoPorMarca();
+				break;
 			case 3:
 				buscarCamionPorMarca();
 				break;
-			case 4:
-				menuOpciones();
 			default:
 				break;
 			}
-		} while (opcion != 5);
+		} while (opcion != 4);
 	}
 
 	private void buscarMotoPorMarca() {
@@ -507,11 +497,10 @@ public class Interfaz {
 				break;
 			case 2:
 				buscarAutoPlaca();
+				break;
 			case 3:
 				buscarCamionPlaca();
 				break;
-			case 4:
-				menuOpciones();
 			default:
 				break;
 			}
